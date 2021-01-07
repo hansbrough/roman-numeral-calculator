@@ -5,7 +5,7 @@ import Key from './Key';
 const Keyboard = ({setKey}) => {
   // key values
   const funcs = ['AC','\u232b'];
-  const numbers = ['I','V','IV','IX','X','L','C','D','M'];
+  const numbers = ['I','IV','V','IX','X','L','C','D','M'];
   const operators = ['+','-','*','/','='];
   const more = ['(',')'];
 
