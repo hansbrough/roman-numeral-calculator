@@ -4,22 +4,24 @@ import {React, useState} from 'react';
 import Keyboard from './Keyboard';
 
 const Calculator = () => {
-  const [exp, setExp] = useState('');// the expression to be evaluated.
+  const [exp, setExp] = useState('');
 
   const operators = ['*','/','+','-'];
   const grouping = ['(',')'];
 
-  // given a roman numeral string return equivalent integer.
-  const convertRomanNumeral = (romanNumber) => {
-    const romanNumerals = ['CM','M','CD','D','XC','C','XL','L','IX','X','IV','V','I'];
-    const romanInt = [900,1000,400,500,90,100,40,50,9,10,4,5,1];
-    let index =  0, num = 0;
-    for(let rn in romanNumerals){
-      index = romanNumber.indexOf(romanNumerals[rn]);
-      while(index !== -1){
-        num += parseInt(romanInt[rn]);
-        romanNumber = romanNumber.replace(romanNumerals[rn],'-');
-        index = romanNumber.indexOf(romanNumerals[rn]);
+  const convertRomanNumeral = (numeralExp) => {
+    const romanNumeralDict = {
+      'CM':900,'M':1000,'CD':400,'D':500,'XC':90,'C':100,'XL':40,'L':50,'IX':9,'X':10,'IV':4,'V':5,'I':1
+    }
+    const numerals = Object.keys(romanNumeralDict);
+    const ints = Object.values(romanNumeralDict);
+    let index = 0, num = 0;
+    for(let rn in numerals) {
+      index = numeralExp.indexOf(numerals[rn]);
+      while(index !== -1) {
+        num += parseInt(ints[rn]);
+        numeralExp = numeralExp.replace(numerals[rn],'-');
+        index = numeralExp.indexOf(numerals[rn]);
       }
     }
     return num;
@@ -82,7 +84,7 @@ const Calculator = () => {
         break;
       default:
         const newExp = (operators.concat(grouping).includes(key)) ? `${exp} ${key} ` : `${exp}${key}`;
-        setExp(exp => newExp);
+        setExp(newExp);
         break;
     }
   };
