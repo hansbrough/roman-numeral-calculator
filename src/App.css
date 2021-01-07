@@ -1,0 +1,74 @@
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/*-- Calculator styles --*/
+.calculator-container {
+  border: 1px solid;
+  border-radius: .5rem;
+  margin: 2rem auto;
+  padding: .5rem;
+  width: 20rem;
+}
+
+.calculator-display {
+  background: #cfcfcf;
+  margin-bottom: 1rem;
+  min-height: 2rem;
+  padding: .5rem;
+}
+
+.calculator-keyboard {
+  border: 1px solid gray;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  grid-template-columns: repeat(4, 5rem);
+  grid-template-rows: repeat(5, 5rem);
+  grid-template-areas:
+  "funcs-pad funcs-pad funcs-pad operator-pad"
+  "number-pad number-pad number-pad operator-pad"
+  "number-pad number-pad number-pad operator-pad"
+  "number-pad number-pad number-pad operator-pad"
+  "more-pad more-pad more-pad more-pad";
+}
+
+.number-pad {
+  grid-area: number-pad;
+  direction: ltr;
+}
+
+.number-pad .key-zero {
+  width: 9rem;
+}
+
+.operator-pad {
+  grid-area: operator-pad;
+}
+
+.funcs-pad {
+  grid-area: funcs-pad;
+}
+
+.more-pad {
+  grid-area: more-pad;
+}
+
+button {
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-color: lightgrey;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem lightgrey;
+}
